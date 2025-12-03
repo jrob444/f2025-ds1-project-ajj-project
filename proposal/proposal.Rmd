@@ -376,12 +376,12 @@ df_region <- gdp_growth_long %>%
   # Manual adjustments for specific World Bank groupings
   mutate(Region = case_when(
     `Country` %in% c("United States", "Canada", "Mexico") ~ "North America",
-    `Country` %in% c("China (People’s Republic of)", "Japan", "Korea", "Australia", "New Zealand", "Indonesia") ~ "East Asia & Pacific",
+    `Country` %in% c("China (People’s Republic of)", "Japan", "Korea", "Australia", "New Zealand", "Indonesia") ~ "East Asia",
     `Country` == "India" ~ "South Asia",
-    `Country` %in% c("Israel", "Saudi Arabia") ~ "Middle East & North Africa",
-    `Country` == "South Africa" ~ "Sub-Saharan Africa",
-    Region == "Europe" ~ "Europe & Central Asia",
-    Region == "Americas" ~ "Latin America & Caribbean",
+    `Country` %in% c("Israel", "Saudi Arabia") ~ "Middle East",
+    `Country` == "South Africa" ~  "Africa",
+    Region == "Europe" ~ "Europe",
+    Region == "Americas" ~ "South America",
     TRUE ~ Region
   )) %>%
   filter(!is.na(GDP_Growth))
